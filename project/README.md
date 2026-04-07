@@ -31,8 +31,12 @@ The application will be available at `http://localhost:7860` (default Gradio por
 
 ### Prerequisites
 
-- Python 3.11+
-- Ollama (local) or API keys for OpenAI, Anthropic, or Google
+| Requirement | Details |
+|---|---|
+| **Python** | 3.11 or higher |
+| **RAM** | 16 GB for Ollama · 8 GB minimum for cloud providers |
+| **Ollama** | Required only for local inference — [install here](https://ollama.com) then run `ollama pull qwen3:4b-instruct-2507-q4_K_M` |
+| **API key** | Required only for cloud providers — copy `project/.env.example` → `project/.env` and fill in your key |
 
 ---
 
@@ -591,6 +595,14 @@ docker rm -f rag-assistant     # Remove
 ```
 
 > ⚠️ **Performance Note**: On Windows/Mac, Docker runs via a Linux VM which may slow down I/O operations like document indexing. LLM inference speed is largely unaffected. On Linux, performance is comparable to running locally.
+
+> ⚠️ **Data Persistence**: The default `docker run` command does not persist indexed documents — they are lost when the container is removed. Mount a volume to keep them:
+> ```bash
+> docker run --name rag-assistant -p 7860:7860 \
+>   -v $(pwd)/qdrant_db:/app/qdrant_db \
+>   -v $(pwd)/parent_store:/app/parent_store \
+>   agentic-rag
+> ```
 
 Once running, open `http://localhost:7860`.
 
