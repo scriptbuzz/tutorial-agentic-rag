@@ -1,11 +1,21 @@
-# Intro To Agentic RAG System Documentation
+<div align="center">
 
-This codebase powers an **Agentic RAG Engine** leveraging the **LangGraph** framework. It natively supports **hierarchical indexing**, **hybrid semantic and keyword search**, and **pluggable LLM compatibility**.
+# Agentic RAG — Project Documentation
 
+**Full-stack Agentic RAG powered by LangGraph — modular, observable, and provider-agnostic.**
 
-## Table of Contents
+<p>
+  <img src="https://img.shields.io/badge/Python-3.11%2B-3776AB?style=flat&logo=python&logoColor=white" alt="Python 3.11+"/>
+  <img src="https://img.shields.io/badge/LangGraph-1.0%2B-1868F2?style=flat&logo=langchain&logoColor=white" alt="LangGraph"/>
+  <img src="https://img.shields.io/badge/Qdrant-Vector%20DB-DC244C?style=flat&logo=qdrant&logoColor=white" alt="Qdrant"/>
+  <img src="https://img.shields.io/badge/Gradio-UI-FF7C00?style=flat&logo=gradio&logoColor=white" alt="Gradio"/>
+  <img src="https://img.shields.io/badge/Langfuse-Observability-5C4EE5?style=flat" alt="Langfuse"/>
+  <img src="https://img.shields.io/badge/license-MIT-22c55e?style=flat" alt="License"/>
+</p>
 
-[Quick Start](#quick-start) | [Architecture Overview](#architecture-overview) | [Project Structure](#project-structure) | [Configuration Guide](#configuration-guide) | [Common Customizations](#common-customizations) | [Observability](#observability) | [Advanced Topics](#advanced-topics) | [Troubleshooting](#troubleshooting)
+**[Quick Start](#quick-start)** · **[Architecture](#architecture-overview)** · **[Project Structure](#project-structure)** · **[Configuration](#configuration-guide)** · **[Customizations](#common-customizations)** · **[Observability](#observability)** · **[Docker](#docker-deployment)** · **[Troubleshooting](#troubleshooting)**
+
+</div>
 
 ---
 
@@ -32,7 +42,7 @@ The application will be available at `http://localhost:7860` (default Gradio por
 ### Prerequisites
 
 | Requirement | Details |
-|---|---|
+|:---|:---|
 | **Python** | 3.11 or higher |
 | **RAM** | 16 GB for Ollama · 8 GB minimum for cloud providers |
 | **Ollama** | Required only for local inference — [install here](https://ollama.com) then run `ollama pull qwen3:4b-instruct-2507-q4_K_M` |
@@ -63,9 +73,9 @@ PDF → Markdown Conversion → Parent/Child Chunking → Vector Indexing → Ag
 ### Entry Point & Configuration
 
 | File | Purpose |
-|------|---------|
+|:------|:--------|
 | `project/app.py` | Application entry point, launches Gradio UI |
-| `project/config.py` | **Central configuration hub** - edit this for provider/model/chunking changes |
+| `project/config.py` | **Central configuration hub** — edit this for provider/model/chunking changes |
 | `project/utils.py` | PDF to Markdown conversion and context token estimation |
 | `project/document_chunker.py` | Parent/child splitting logic with cleaning and merging rules |
 | `project/Dockerfile` | Dockerfile with Ollama for local deployment |
@@ -73,8 +83,8 @@ PDF → Markdown Conversion → Parent/Child Chunking → Vector Indexing → Ag
 ### Core System
 
 | File | Purpose |
-|------|---------|
-| `project/core/rag_system.py` | System bootstrap - creates managers and compiles LangGraph agent |
+|:------|:--------|
+| `project/core/rag_system.py` | System bootstrap — creates managers and compiles LangGraph agent |
 | `project/core/document_manager.py` | Document ingestion pipeline (convert, chunk, index) |
 | `project/core/chat_interface.py` | Thin wrapper for agent graph interaction |
 | `project/core/observability.py` | Optional Langfuse tracing — callback handler lifecycle |
@@ -82,16 +92,16 @@ PDF → Markdown Conversion → Parent/Child Chunking → Vector Indexing → Ag
 ### Database Layer
 
 | File | Purpose |
-|------|---------|
+|:------|:--------|
 | `project/db/vector_db_manager.py` | Qdrant client wrapper with embedding initialization |
 | `project/db/parent_store_manager.py` | File-backed storage for parent chunks |
 
 ### RAG Agent (LangGraph)
 
 | File | Purpose |
-|------|---------|
+|:------|:--------|
 | `project/rag_agent/graph.py` | Graph builder and compilation logic |
-| `project/rag_agent/graph_state.py` | Shared and per-agent graph state definitions and answer accumulation/reset logic|
+| `project/rag_agent/graph_state.py` | Shared and per-agent graph state definitions and answer accumulation/reset logic |
 | `project/rag_agent/nodes.py` | Node implementations (summarize, rewrite, agent execution, aggregate) |
 | `project/rag_agent/edges.py` | Conditional edge routing logic (e.g., routing based on query clarity) |
 | `project/rag_agent/tools.py` | Retrieval tools (`search_child_chunks`, `retrieve_parent_chunks`) |
@@ -101,7 +111,7 @@ PDF → Markdown Conversion → Parent/Child Chunking → Vector Indexing → Ag
 ### User Interface
 
 | File | Purpose |
-|------|---------|
+|:------|:--------|
 | `project/ui/css.py` | Custom CSS styling for the Gradio interface |
 | `project/ui/gradio_app.py` | Gradio UI implementation with document upload and chat |
 
@@ -315,7 +325,7 @@ ACTIVE_LLM_CONFIG = "google"  # Switch to Gemini Pro
 **Provider Reference Table:**
 
 | Provider | Environment Variable | Import Statement | Example Models |
-|----------|---------------------|------------------|----------------|
+|:---------|:--------------------|:----------------|:--------------|
 | OpenAI | `OPENAI_API_KEY` | `from langchain_openai import ChatOpenAI` | `gpt-4o`, `gpt-4o-mini` |
 | Anthropic | `ANTHROPIC_API_KEY` | `from langchain_anthropic import ChatAnthropic` | `claude-opus-4-6`, `claude-sonnet-4-6` |
 | Google | `GOOGLE_API_KEY` | `from langchain_google_genai import ChatGoogleGenerativeAI` | `gemini-2.5-pro`, `gemini-2.5-flash` |
@@ -486,7 +496,7 @@ For additional details on integrating Langfuse with LangChain or LangGraph, see 
 ### What gets traced
 
 | Component | Traced operations |
-|-----------|-------------------|
+|:----------|:-----------------|
 | Graph nodes | `summarize_history`, `rewrite_query`, `orchestrator`, `compress_context`, `fallback_response`, `aggregate_answers` |
 | Tools | `search_child_chunks`, `retrieve_parent_chunks` (arguments + results) |
 | Structured output | `QueryAnalysis` parsing in the rewrite step |
@@ -611,7 +621,7 @@ Once running, open `http://localhost:7860`.
 ## Troubleshooting
 
 | Issue | Cause | Solution |
-|-------|-------|----------|
+|:------|:------|:---------|
 | "Model not found" error | Incorrect model name for provider | Verify `LLM_MODEL` matches provider's API (e.g., `gpt-4o-mini` not `gpt4-mini`) |
 | Low-quality retrieval results | Poor embedding model or chunk configuration | Re-index with better embeddings (e.g., all-mpnet-base-v2) or adjust chunk sizes |
 | Slow response times | Large embedding model or high `top_k` value | Use smaller embedding models (e.g., all-MiniLM-L6-v2) or reduce `top_k` in retrieval tools |

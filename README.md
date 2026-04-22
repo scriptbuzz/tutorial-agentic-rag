@@ -50,21 +50,39 @@ To achieve this level of autonomy, this codebase integrates several best-in-clas
 </p>
 
 <p align="center">
+  <a href="https://github.com/scriptbuzz/tutorial-agentic-rag/stargazers">
+    <img src="https://img.shields.io/github/stars/scriptbuzz/tutorial-agentic-rag?style=flat&logo=github&color=yellow" alt="GitHub Stars"/>
+  </a>
+  <a href="https://github.com/scriptbuzz/tutorial-agentic-rag/network/members">
+    <img src="https://img.shields.io/github/forks/scriptbuzz/tutorial-agentic-rag?style=flat&logo=github&color=blue" alt="GitHub Forks"/>
+  </a>
+  <a href="https://github.com/scriptbuzz/tutorial-agentic-rag/commits/main">
+    <img src="https://img.shields.io/github/last-commit/scriptbuzz/tutorial-agentic-rag?style=flat&logo=github" alt="Last Commit"/>
+  </a>
+  <a href="https://github.com/scriptbuzz/tutorial-agentic-rag/issues">
+    <img src="https://img.shields.io/github/issues/scriptbuzz/tutorial-agentic-rag?style=flat&logo=github" alt="Open Issues"/>
+  </a>
+  <img src="https://img.shields.io/badge/license-MIT-22c55e?style=flat" alt="License"/>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.11%2B-3776AB?style=flat&logo=python&logoColor=white" alt="Python 3.11+"/>
+  <img src="https://img.shields.io/badge/LangGraph-1.0%2B-1868F2?style=flat&logo=langchain&logoColor=white" alt="LangGraph"/>
+  <img src="https://img.shields.io/badge/Qdrant-Vector%20DB-DC244C?style=flat&logo=qdrant&logoColor=white" alt="Qdrant"/>
+  <img src="https://img.shields.io/badge/Gradio-UI-FF7C00?style=flat&logo=gradio&logoColor=white" alt="Gradio"/>
+  <img src="https://img.shields.io/badge/LLM%20Providers-Ollama%20%7C%20OpenAI%20%7C%20Anthropic%20%7C%20Google-8B5CF6?style=flat" alt="LLM Providers"/>
+</p>
+
+<p align="center">
   <a href="https://colab.research.google.com/github/scriptbuzz/tutorial-agentic-rag/blob/main/notebooks/agentic_rag.ipynb">
     <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
   </a>
   <a href="https://github.com/von-development/awesome-langgraph">
     <img src="https://awesome.re/badge.svg" alt="Awesome LangGraph"/>
   </a>
-  <img src="https://img.shields.io/badge/license-MIT-green" alt="License"/>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white" alt="Python"/>
-  <img src="https://img.shields.io/badge/LangGraph-1.0%2B-orange?logo=langchain&logoColor=white" alt="LangGraph"/>
-  <img src="https://img.shields.io/badge/Qdrant-vector%20db-DC244C" alt="Qdrant"/>
-  <img src="https://img.shields.io/badge/Gradio-UI-f97316?logo=gradio&logoColor=white" alt="Gradio"/>
-  <img src="https://img.shields.io/badge/LLM%20Providers-Ollama%20%7C%20OpenAI%20%7C%20Anthropic%20%7C%20Google-purple" alt="LLM Providers"/>
+  <a href="https://github.com/scriptbuzz/tutorial-agentic-rag/pulls">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat" alt="PRs Welcome"/>
+  </a>
 </p>
 
 <p align="center">
